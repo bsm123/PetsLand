@@ -8,50 +8,72 @@
 import MapKit
 import SwiftUI
 
+
 struct ContentView: View{
     @StateObject private var viewModel = ContentViewModel()
-    
+    @State private var showingEditScreen = false
+    @State var shop: Bool = false
+    @State var clinc: Bool = false
+    @State var servise: Bool = false
+    @State var adopt: Bool = false
     var body: some View {
-        
         VStack{
             NavigationView {
                 ZStack{
-                    Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
-                        .edgesIgnoringSafeArea(.bottom)
-                        .accentColor(Color(.systemGreen))
-                        .onAppear {
-                            viewModel.checkIfLocationServicesIsEnabled()
-                        }.navigationTitle("Pets Land")
+                    Map(coordinateRegion: $viewModel.region,
+                        interactionModes: .all,
+                        annotationItems: viewModel.annotationItems,
+                        annotationContent: { pin in
+                        MapAnnotation(coordinate: pin.coordinate,
+                                      content: {
+                            PinButtonView(pin: pin)
+                        })
+                    })
+                    
+                    .edgesIgnoringSafeArea(.bottom)
+                    .accentColor(Color(.systemGreen))
+                    .onAppear {
+                        viewModel.checkIfLocationServicesIsEnabled()
+                    }.navigationTitle("Pets Land")
                     
                     VStack{
                         ScrollView(.horizontal){
                             HStack{
                                 Button(action :{
+//                                    viewModel.annotationItems = [MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 24.8114, longitude: 46.7013))]
+//
+                                    shop.toggle()
+                                    clinc = false
+                                    servise = false
+                                    adopt = false
                                     
-                                    //????????
-                                } , label: {
+                                }
+                                       , label: {
                                     ZStack{
-                                        
                                         RoundedRectangle(cornerRadius: 8, style: .continuous)
                                             .fill(Color(.gray))
                                             .frame(width: 134,height: 42)
                                             .cornerRadius(8)
                                         RoundedRectangle(cornerRadius: 7, style: .continuous)
-                                            .fill(Color(red: 0.787, green: 0.877, blue: 0.754))
+                                            .fill(shop ? Color(red: 0.392, green: 0.646, blue: 0.463) : Color(red: 0.787, green: 0.877, blue: 0.754))
                                             .overlay{
                                                 Text("Vets Shop")
                                                     .font(.body)
-                                                    .fontWeight(.regular)
-                                                    .foregroundColor(Color.black)
-                                                .multilineTextAlignment(.center)}
-                                        
+                                                    .fontWeight(shop ? .bold :.regular)
+                                                    .foregroundColor(shop ? .white :.black)
+                                                    .multilineTextAlignment(.center)
+                                                
+                                            }
                                             .frame(width: 132,height: 40)
                                     }
                                 })
                                 ///
-                                Button(action :{
-                                    
-                                    //????????
+                            Button(action :{
+                                clinc.toggle()
+                                shop = false
+                                servise = false
+                                adopt = false
+                                
                                 } , label: {
                                     ZStack{
                                         
@@ -60,14 +82,14 @@ struct ContentView: View{
                                             .frame(width: 134,height: 42)
                                             .cornerRadius(8)
                                         RoundedRectangle(cornerRadius: 7, style: .continuous)
-                                            .fill(Color(red: 0.787, green: 0.877, blue: 0.754))
+                                            .fill(clinc ? Color(red: 0.392, green: 0.646, blue: 0.463) : Color(red: 0.787, green: 0.877, blue: 0.754))
                                             .overlay{
                                                 Text("Vets Clinic")
-                                                    .font(.body)
-                                                    .fontWeight(.regular)
-                                                    .foregroundColor(Color.black)
-                                                .multilineTextAlignment(.center)}
-                                        
+                                                    .fontWeight(clinc ? .bold :.regular)
+                                                    .foregroundColor(clinc ? .white :.black)
+                                                    .multilineTextAlignment(.center)
+                                                
+                                            }
                                             .frame(width: 132,height: 40)
                                     }
                                 })
@@ -75,7 +97,10 @@ struct ContentView: View{
                                 //
                                 Button(action :{
                                     
-                                    //????????
+                                    servise.toggle()
+                                    shop = false
+                                    clinc = false
+                                    adopt = false
                                 } , label: {
                                     ZStack{
                                         
@@ -84,20 +109,25 @@ struct ContentView: View{
                                             .frame(width: 134,height: 42)
                                             .cornerRadius(8)
                                         RoundedRectangle(cornerRadius: 7, style: .continuous)
-                                            .fill(Color(red: 0.787, green: 0.877, blue: 0.754))
+                                            .fill(servise ? Color(red: 0.392, green: 0.646, blue: 0.463) : Color(red: 0.787, green: 0.877, blue: 0.754))
                                             .overlay{
                                                 Text("Vets Service")
                                                     .font(.body)
-                                                    .fontWeight(.regular)
-                                                    .foregroundColor(Color.black)
-                                                .multilineTextAlignment(.center)}
+                                                    .fontWeight(servise ? .bold :.regular)
+                                                    .foregroundColor(servise ? .white :.black)
+                                                    .multilineTextAlignment(.center)
+                                                
+                                            }
                                         
                                             .frame(width: 132,height: 40)
                                     }
                                 })
                                 //
                                 Button(action :{
-                                    
+                                    adopt.toggle()
+                                    shop = false
+                                    clinc = false
+                                    servise = false
                                     //????????
                                 } , label: {
                                     ZStack{
@@ -107,13 +137,15 @@ struct ContentView: View{
                                             .frame(width: 134,height: 42)
                                             .cornerRadius(8)
                                         RoundedRectangle(cornerRadius: 7, style: .continuous)
-                                            .fill(Color(red: 0.787, green: 0.877, blue: 0.754))
+                                            .fill(adopt ? Color(red: 0.392, green: 0.646, blue: 0.463) : Color(red: 0.787, green: 0.877, blue: 0.754))
                                             .overlay{
                                                 Text("Adoption center")
                                                     .font(.body)
-                                                    .fontWeight(.regular)
-                                                    .foregroundColor(Color.black)
-                                                .multilineTextAlignment(.center)}
+                                                    .fontWeight(adopt ? .bold :.regular)
+                                                    .foregroundColor(adopt ? .white :.black)
+                                                    .multilineTextAlignment(.center)
+                                                
+                                            }
                                         
                                             .frame(width: 132,height: 40)
                                     }
@@ -137,3 +169,43 @@ struct ContentView: View{
         }
     }
 }
+
+
+struct PinButtonView: View {
+    @State private var showingEditScreen = false
+    @State var pin: MyAnnotationItem
+    
+    var body: some View {
+        Button(action: {
+            showingEditScreen.toggle()
+        }) {
+            Image(systemName: "mappin")
+                .padding()
+                .foregroundColor(.red)
+                .font(.title)
+        }
+        .sheet(isPresented: $showingEditScreen,
+               content: {
+            EditView(pin: self.$pin)
+        })
+    }
+}
+
+struct EditView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var pin: MyAnnotationItem
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                TextField("Place name", text: $pin.name)
+                TextField("Description", text: $pin.description)
+            }
+            .navigationTitle("Edit place")
+            .navigationBarItems(trailing: Button("Done") {
+                self.presentationMode.wrappedValue.dismiss()
+            })
+        }
+    }
+}
+

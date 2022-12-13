@@ -15,20 +15,19 @@ struct SplashScreenView: View {
     var body: some View {
         if isActive {
             ContentView()
-            
         }
         else {
             ZStack {
                 Image("splash")
-                .frame(width:10, height: 10)
-                .scaleEffect(size)
-                .opacity(opacity)
-                .onAppear {
-                    withAnimation(.easeIn(duration: 2.2)) {
-                        self.size = 0.6
-                        self.opacity = 1.00
+                    .frame(width:10, height: 10)
+                    .scaleEffect(size)
+                    .opacity(opacity)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 2.2)) {
+                            self.size = 0.6
+                            self.opacity = 1.00
+                        }
                     }
-                }
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {

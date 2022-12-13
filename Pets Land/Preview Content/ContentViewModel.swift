@@ -17,6 +17,20 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
     var locationManager: CLLocationManager?
     
+    @Published var annotationItems: [MyAnnotationItem] = [
+        MyAnnotationItem(name:"Apple Park",description: "Apple Inc. headquarters",coordinate: CLLocationCoordinate2D(latitude: 24.8114, longitude: 46.7013)),
+        MyAnnotationItem(name:"Apple Park",description: "Apple Inc. headquarters",coordinate: CLLocationCoordinate2D(latitude: 24.8114, longitude: 46.7013)),
+        MyAnnotationItem(name:"Apple Park",description: "Apple Inc. headquarters",coordinate: CLLocationCoordinate2D(latitude: 24.8514, longitude: 46.7013)),
+        MyAnnotationItem(name:"Apple Park",description: "Apple Inc. headquarters",coordinate: CLLocationCoordinate2D(latitude: 24.8214, longitude: 46.5013)),
+        MyAnnotationItem(name:"Apple Park",description: "Apple Inc. headquarters",coordinate: CLLocationCoordinate2D(latitude: 24.8314, longitude: 46.6013))
+    ]
+    
+    //    func fetchAnnotations(){
+    //
+    //    }
+    
+    
+    
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
