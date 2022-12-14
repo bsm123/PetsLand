@@ -64,9 +64,7 @@ extension PinsPopUp{
             Text("Riyadh ,Saudi Arabia")
                 .font(.subheadline)
         }
-        
     }
-    
     private var learnMoreButton: some View {
         Button {
             

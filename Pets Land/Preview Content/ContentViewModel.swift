@@ -29,8 +29,6 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     //
     //    }
     
-    
-    
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
@@ -44,8 +42,8 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         guard let locationManager = locationManager else {
             print("hi")
             return
-            
         }
+        
         switch locationManager.authorizationStatus {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()

@@ -20,8 +20,7 @@ struct ContentView: View{
         VStack{
             NavigationView {
                 ZStack{
-                    Map(coordinateRegion: $viewModel.region,
-                        interactionModes: .all,
+                    Map(coordinateRegion: $viewModel.region,interactionModes: .all, showsUserLocation: true,
                         annotationItems: viewModel.annotationItems,
                         annotationContent: { pin in
                         MapAnnotation(coordinate: pin.coordinate,
@@ -40,8 +39,8 @@ struct ContentView: View{
                         ScrollView(.horizontal){
                             HStack{
                                 Button(action :{
-//                                    viewModel.annotationItems = [MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 24.8114, longitude: 46.7013))]
-//
+                                    viewModel.annotationItems = [MyAnnotationItem(name:"Apple Park",description: "Apple Inc. headquarters",coordinate: CLLocationCoordinate2D(latitude: 24.8114, longitude: 46.7013))]
+                                    
                                     shop.toggle()
                                     clinc = false
                                     servise = false
@@ -68,12 +67,12 @@ struct ContentView: View{
                                     }
                                 })
                                 ///
-                            Button(action :{
-                                clinc.toggle()
-                                shop = false
-                                servise = false
-                                adopt = false
-                                
+                                Button(action :{
+                                    clinc.toggle()
+                                    shop = false
+                                    servise = false
+                                    adopt = false
+                                    
                                 } , label: {
                                     ZStack{
                                         
@@ -187,6 +186,7 @@ struct PinButtonView: View {
         .sheet(isPresented: $showingEditScreen,
                content: {
             EditView(pin: self.$pin)
+                .presentationDetents([.large,.medium,.fraction(0.75)])
         })
     }
 }

@@ -19,11 +19,12 @@ struct SplashScreenView: View {
         else {
             ZStack {
                 Image("splash")
-                    .frame(width:10, height: 10)
+                    .resizable()
+                    .frame(width:500, height: 500)
                     .scaleEffect(size)
                     .opacity(opacity)
                     .onAppear {
-                        withAnimation(.easeIn(duration: 2.2)) {
+                        withAnimation(.easeIn(duration: 1.5)) {
                             self.size = 0.6
                             self.opacity = 1.00
                         }
