@@ -18,6 +18,8 @@
 		E62FF13E293FB168003E6E45 /* Pets_LandUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62FF13D293FB168003E6E45 /* Pets_LandUITestsLaunchTests.swift */; };
 		E62FF14B293FB19B003E6E45 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62FF14A293FB19B003E6E45 /* ContentViewModel.swift */; };
 		E6B0319229473D7C00FAF4A5 /* PinsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0319129473D7C00FAF4A5 /* PinsPopUp.swift */; };
+		FE62DF2B294B4DC300043AF8 /* ServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62DF2A294B4DC300043AF8 /* ServicesView.swift */; };
+		FE62DF2F294F55A900043AF8 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62DF2E294F55A900043AF8 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		E62FF14C293FB1D2003E6E45 /* Pets-Land-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Pets-Land-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E6B0315729460F7000FAF4A5 /* Pets Land.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pets Land.entitlements"; sourceTree = "<group>"; };
 		E6B0319129473D7C00FAF4A5 /* PinsPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinsPopUp.swift; sourceTree = "<group>"; };
+		FE62DF2A294B4DC300043AF8 /* ServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesView.swift; sourceTree = "<group>"; };
+		FE62DF2E294F55A900043AF8 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 				E62FF120293FB166003E6E45 /* Pets_LandApp.swift */,
 				E62FD7FF2940DA4800B4C9F1 /* SplashScreenView.swift */,
 				E62FF122293FB166003E6E45 /* ContentView.swift */,
+				FE62DF2A294B4DC300043AF8 /* ServicesView.swift */,
+				FE62DF2E294F55A900043AF8 /* Test.swift */,
 				E6B0319129473D7C00FAF4A5 /* PinsPopUp.swift */,
 				E62FF124293FB168003E6E45 /* Assets.xcassets */,
 				E62FF126293FB168003E6E45 /* Preview Content */,
@@ -283,8 +289,10 @@
 			files = (
 				E62FD83D294209C800B4C9F1 /* MyAnnotationItem.swift in Sources */,
 				E62FF123293FB166003E6E45 /* ContentView.swift in Sources */,
+				FE62DF2B294B4DC300043AF8 /* ServicesView.swift in Sources */,
 				E6B0319229473D7C00FAF4A5 /* PinsPopUp.swift in Sources */,
 				E62FF121293FB166003E6E45 /* Pets_LandApp.swift in Sources */,
+				FE62DF2F294F55A900043AF8 /* Test.swift in Sources */,
 				E62FF14B293FB19B003E6E45 /* ContentViewModel.swift in Sources */,
 				E62FD8002940DA4800B4C9F1 /* SplashScreenView.swift in Sources */,
 			);
